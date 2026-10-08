@@ -1,0 +1,72 @@
+@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<section class="auth-page">
+
+    <div class="auth-box">
+
+        <div class="auth-header">
+            <span>TÀI KHOẢN</span>
+            <h1>Đăng nhập</h1>
+            <p>
+                Đăng nhập để tiếp tục đặt bàn.
+            </p>
+        </div>
+
+        @if (ViewBag.Loi != null)
+        {
+            <div class="auth-error">
+                @ViewBag.Loi
+            </div>
+        }
+
+        <form asp-controller="TaiKhoan"
+              asp-action="DangNhap"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <input type="hidden"
+                   name="returnUrl"
+                   value="@ViewBag.ReturnUrl" />
+
+            <div class="form-group-custom">
+                <label>Email</label>
+
+                <input type="email"
+                       name="email"
+                       class="form-control-custom"
+                       placeholder="example@gmail.com"
+                       required />
+            </div>
+
+            <div class="form-group-custom">
+                <label>Mật khẩu</label>
+
+                <input type="password"
+                       name="matKhau"
+                       class="form-control-custom"
+                       placeholder="Nhập mật khẩu"
+                       required />
+            </div>
+
+            <button type="submit"
+                    class="auth-submit">
+                ĐĂNG NHẬP
+            </button>
+
+        </form>
+
+        <div class="auth-bottom">
+            Chưa có tài khoản?
+
+            <a asp-controller="TaiKhoan"
+               asp-action="DangKy">
+                Đăng ký ngay
+            </a>
+        </div>
+
+    </div>
+
+</section>

@@ -1,0 +1,228 @@
+@model IEnumerable<RestaurantManagement.Models.DatBan>
+
+@{
+    ViewData["Title"] = "Đơn đặt bàn";
+}
+
+<div class="employee-orders">
+
+    <div class="orders-header">
+
+        <div>
+            <span>KHU VỰC NHÂN VIÊN</span>
+
+            <h1>Đơn đặt bàn</h1>
+
+            <p>
+                Danh sách yêu cầu đặt bàn của khách hàng.
+            </p>
+        </div>
+
+        <a asp-area="NhanVien"
+           asp-controller="Home"
+           asp-action="Index"
+           class="back-employee">
+
+            ← Trang nhân viên
+
+        </a>
+
+    </div>
+
+
+    @if (TempData["Loi"] != null)
+    {
+        <div class="employee-error">
+            @TempData["Loi"]
+        </div>
+    }
+
+
+    @if (!Model.Any())
+    {
+        <div class="empty-orders">
+
+            <div>📭</div>
+
+            <h2>Chưa có đơn đặt bàn</h2>
+
+            <p>
+                Các yêu cầu mới của khách hàng
+                sẽ xuất hiện tại đây.
+            </p>
+
+        </div>
+    }
+    else
+    {
+        <div class="orders-list">
+
+            @foreach (var item in Model)
+            {
+                <div class="order-card">
+
+                    <div class="order-top">
+
+                        <div>
+                            <span class="order-number">
+                                ĐƠN #@item.MaDatBan
+                            </span>
+
+                            <h2>
+                                @item.MaKhachHangNavigation?.HoTen
+                            </h2>
+                        </div>
+
+
+                        @if (item.TrangThai == "Chờ xác nhận")
+                        {
+                            <span class="status waiting">
+                                Chờ xác nhận
+                            </span>
+                        }
+                        else if (item.TrangThai == "Đã duyệt")
+                        {
+                            <span class="status accepted">
+                                Đã duyệt
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="status cancelled">
+                                Đã hủy
+                            </span>
+                        }
+
+                    </div>
+
+
+                    <div class="order-information">
+
+                        <div>
+                            <span>Bàn</span>
+
+                            <strong>
+                                @item.MaBanNavigation?.TenBan
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Số khách</span>
+
+                            <strong>
+                                @item.SoLuongKhach người
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Ngày</span>
+
+                            <strong>
+                                @item.NgayDat
+                            </strong>
+                        </div>
+
+
+                        <div>
+                            <span>Giờ</span>
+
+                            <strong>
+                                @item.GioDat
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    @if (!string.IsNullOrWhiteSpace(item.GhiChu))
+                    {
+                        <div class="order-note">
+
+                            <strong>Ghi chú của khách:</strong>
+
+                            <p>@item.GhiChu</p>
+
+                        </div>
+                    }
+
+
+                    @if (item.TrangThai == "Chờ xác nhận")
+                    {
+                        <div class="order-actions">
+
+                            <!-- DUYỆT -->
+
+                            <form asp-area="NhanVien"
+                                  asp-controller="DatBan"
+                                  asp-action="Duyet"
+                                  method="post">
+
+                                @Html.AntiForgeryToken()
+
+                                <input type="hidden"
+                                       name="id"
+                                       value="@item.MaDatBan" />
+
+                                <button type="submit"
+                                        class="btn-approve">
+
+                                    ✓ Duyệt đơn
+
+                                </button>
+
+                            </form>
+
+
+                            <!-- HỦY -->
+
+                            <form asp-area="NhanVien"
+                                  asp-controller="DatBan"
+                                  asp-action="Huy"
+                                  method="post"
+                                  class="cancel-form">
+
+                                @Html.AntiForgeryToken()
+
+                                <input type="hidden"
+                                       name="id"
+                                       value="@item.MaDatBan" />
+
+                                <input type="text"
+                                       name="lyDoHuy"
+                                       placeholder="Nhập lý do hủy..."
+                                       required />
+
+                                <button type="submit"
+                                        class="btn-cancel">
+
+                                    Hủy
+
+                                </button>
+
+                            </form>
+
+                        </div>
+                    }
+
+
+                    @if (item.TrangThai == "Đã hủy"
+                         && !string.IsNullOrWhiteSpace(item.LyDoHuy))
+                    {
+                        <div class="cancel-reason">
+
+                            <strong>Lý do hủy:</strong>
+
+                            @item.LyDoHuy
+
+                        </div>
+                    }
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>

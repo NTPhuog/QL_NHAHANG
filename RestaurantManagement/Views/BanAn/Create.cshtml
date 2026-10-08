@@ -1,0 +1,135 @@
+@model RestaurantManagement.Models.DatBan
+
+@{
+    ViewData["Title"] = "Đặt bàn";
+}
+
+<section class="booking-page">
+
+    <div class="booking-header">
+        <span>ĐẶT CHỖ</span>
+        <h1>Thông tin đặt bàn</h1>
+        <p>
+            Vui lòng nhập thông tin để gửi yêu cầu đặt bàn.
+        </p>
+    </div>
+
+    <div class="booking-container">
+
+        <div class="selected-table">
+
+            <div class="selected-table-icon">
+                🪑
+            </div>
+
+            <div>
+                <span>BẠN ĐANG CHỌN</span>
+
+                <h2>@ViewBag.TenBan</h2>
+
+                <p>
+                    Sức chứa:
+                    <strong>@ViewBag.SoChoNgoi người</strong>
+                </p>
+            </div>
+
+        </div>
+
+
+        <form asp-action="Create"
+              method="post"
+              class="booking-form">
+
+            @Html.AntiForgeryToken()
+
+            <input asp-for="MaBan" type="hidden" />
+
+            <div asp-validation-summary="ModelOnly"
+                 class="validation-summary">
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group-custom">
+                    <label asp-for="NgayDat">
+                        Ngày đặt
+                    </label>
+
+                    <input asp-for="NgayDat"
+                           type="date"
+                           class="form-control-custom"
+                           required />
+                </div>
+
+
+                <div class="form-group-custom">
+                    <label asp-for="GioDat">
+                        Giờ đặt
+                    </label>
+
+                    <input asp-for="GioDat"
+                           type="time"
+                           class="form-control-custom"
+                           required />
+                </div>
+
+            </div>
+
+
+            <div class="form-group-custom">
+
+                <label asp-for="SoLuongKhach">
+                    Số lượng khách
+                </label>
+
+                <input asp-for="SoLuongKhach"
+                       type="number"
+                       min="1"
+                       max="@ViewBag.SoChoNgoi"
+                       class="form-control-custom"
+                       placeholder="Nhập số người"
+                       required />
+
+                <small>
+                    Bàn này tối đa @ViewBag.SoChoNgoi người.
+                </small>
+
+            </div>
+
+
+            <div class="form-group-custom">
+
+                <label asp-for="GhiChu">
+                    Ghi chú
+                </label>
+
+                <textarea asp-for="GhiChu"
+                          class="form-control-custom"
+                          rows="4"
+                          placeholder="Ví dụ: gần cửa sổ, có trẻ nhỏ...">
+                </textarea>
+
+            </div>
+
+
+            <div class="booking-actions">
+
+                <a asp-controller="BanAn"
+                   asp-action="Index"
+                   class="btn-back">
+                    ← Chọn bàn khác
+                </a>
+
+                <button type="submit"
+                        class="btn-confirm">
+                    XÁC NHẬN ĐẶT BÀN
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>

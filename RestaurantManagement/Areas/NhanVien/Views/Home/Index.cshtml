@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Trang nhân viên";
+}
+
+<div class="employee-page">
+
+    <div class="employee-header">
+        <span>KHU VỰC NHÂN VIÊN</span>
+        <h1>Quản lý nhà hàng</h1>
+        <p>
+            Tiếp nhận và xử lý các yêu cầu đặt bàn của khách hàng.
+        </p>
+    </div>
+
+    <div class="employee-menu">
+
+        <a asp-area="NhanVien"
+           asp-controller="DatBan"
+           asp-action="Index"
+           class="employee-card">
+
+            <div class="employee-icon">📋</div>
+
+            <h2>Đơn đặt bàn</h2>
+
+            <p>
+                Xem các yêu cầu đặt bàn mới,
+                duyệt hoặc hủy yêu cầu.
+            </p>
+
+            <span>Xem danh sách →</span>
+        </a>
+
+    </div>
+
+</div>

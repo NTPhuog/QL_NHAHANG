@@ -1,0 +1,41 @@
+@model IEnumerable<RestaurantManagement.Models.BanAn>
+
+@{
+    ViewData["Title"] = "Bàn ăn";
+}
+
+<section class="table-page">
+    <div class="section-title">
+        <span>CHỌN BÀN</span>
+        <h2>Danh sách bàn ăn</h2>
+        <p>Chọn bàn phù hợp với số lượng khách của bạn.</p>
+    </div>
+
+    <div class="table-grid">
+        @foreach (var ban in Model)
+        {
+            <div class="table-card">
+                <div class="table-icon">🪑</div>
+
+                <h3>@ban.TenBan</h3>
+
+                <p>
+                    Số chỗ:
+                    <strong>@ban.SoChoNgoi người</strong>
+                </p>
+
+                <p>
+                    Trạng thái:
+                    <span class="status">@ban.TrangThai</span>
+                </p>
+
+                <a asp-controller="DatBan"
+                   asp-action="Create"
+                   asp-route-maBan="@ban.MaBan"
+                   class="btn-primary-custom">
+                    Chọn bàn
+                </a>
+            </div>
+        }
+    </div>
+</section>

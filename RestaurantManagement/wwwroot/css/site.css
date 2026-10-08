@@ -1,0 +1,1001 @@
+html {
+    font-size: 14px;
+}
+
+body {
+    margin: 0;
+    background: #f7f4ef;
+    color: #252525;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =====================
+   HEADER
+===================== */
+
+.main-header {
+    background: #111;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #d3a85c;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: #d3a85c;
+}
+
+.btn-login {
+    border: 1px solid #d3a85c;
+    color: #d3a85c;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 4px;
+}
+
+.btn-login:hover {
+    background: #d3a85c;
+    color: #111;
+}
+
+
+/* =====================
+   HERO
+===================== */
+
+.hero {
+    min-height: 600px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.65)
+        ),
+        url('/images/restaurant-bg.jpg');
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 800px;
+    padding: 30px;
+    color: white;
+}
+
+.hero-small {
+    color: #d3a85c;
+    letter-spacing: 5px;
+    font-size: 14px;
+}
+
+.hero h1 {
+    margin: 15px 0;
+    font-size: 72px;
+    font-family: Georgia, serif;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+    color: #ddd;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+
+/* =====================
+   BUTTON
+===================== */
+
+.btn-primary-custom {
+    display: inline-block;
+    background: #b88a42;
+    color: white;
+
+    padding: 13px 25px;
+
+    text-decoration: none;
+    border-radius: 3px;
+
+    font-weight: bold;
+}
+
+.btn-primary-custom:hover {
+    background: #956d31;
+    color: white;
+}
+
+.btn-outline-custom {
+    display: inline-block;
+
+    border: 1px solid white;
+    color: white;
+
+    padding: 13px 25px;
+
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.btn-outline-custom:hover {
+    background: white;
+    color: #222;
+}
+
+
+/* =====================
+   INTRO
+===================== */
+
+.intro-section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 25px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title span {
+    color: #b88a42;
+    letter-spacing: 4px;
+    font-size: 13px;
+}
+
+.section-title h2 {
+    margin: 10px 0;
+    font-family: Georgia, serif;
+    font-size: 38px;
+}
+
+.section-title p {
+    max-width: 600px;
+    margin: auto;
+    color: #777;
+    line-height: 1.7;
+}
+
+
+/* =====================
+   CARDS
+===================== */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.feature-card {
+    background: white;
+
+    padding: 35px 30px;
+
+    text-align: center;
+
+    border: 1px solid #e4dfd8;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    transition: 0.25s;
+}
+
+.feature-icon {
+    font-size: 38px;
+}
+
+.feature-card h3 {
+    font-family: Georgia, serif;
+    font-size: 23px;
+}
+
+.feature-card p {
+    color: #777;
+    line-height: 1.6;
+}
+
+.feature-card a {
+    color: #a77935;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* =====================
+   BOOKING
+===================== */
+
+.booking-banner {
+    max-width: 1150px;
+    margin: 20px auto 80px;
+
+    padding: 45px;
+
+    background: #171717;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.booking-banner span {
+    color: #d3a85c;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.booking-banner h2 {
+    margin: 8px 0;
+
+    font-family: Georgia, serif;
+    font-size: 32px;
+}
+
+.booking-banner p {
+    color: #bbb;
+}
+
+
+/* =====================
+   MOBILE
+===================== */
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-banner {
+        margin: 20px 15px 50px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+.table-page {
+    max-width: 1200px;
+    margin: auto;
+    padding: 70px 25px;
+}
+
+.table-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.table-card {
+    background: white;
+    border: 1px solid #e2ddd5;
+    padding: 30px;
+    text-align: center;
+}
+
+.table-card:hover {
+    transform: translateY(-5px);
+    transition: 0.25s;
+}
+
+.table-icon {
+    font-size: 42px;
+}
+
+.table-card h3 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+}
+
+.table-card p {
+    color: #666;
+}
+
+.status {
+    color: #a77935;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .table-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* ===============================
+   ĐẶT BÀN
+================================ */
+
+.booking-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 70px 25px;
+}
+
+.booking-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.booking-header span {
+    color: #b88a42;
+    letter-spacing: 4px;
+    font-size: 13px;
+}
+
+.booking-header h1 {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+.booking-header p {
+    color: #777;
+}
+
+.booking-container {
+    background: white;
+    border: 1px solid #e2ddd5;
+}
+
+.selected-table {
+    background: #171717;
+    color: white;
+
+    padding: 25px 35px;
+
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.selected-table-icon {
+    font-size: 45px;
+}
+
+.selected-table span {
+    color: #d3a85c;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.selected-table h2 {
+    margin: 5px 0;
+    font-family: Georgia, serif;
+}
+
+.selected-table p {
+    margin: 0;
+    color: #bbb;
+}
+
+.booking-form {
+    padding: 35px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group-custom {
+    margin-bottom: 22px;
+}
+
+.form-group-custom label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group-custom small {
+    display: block;
+    color: #888;
+    margin-top: 6px;
+}
+
+.form-control-custom {
+    box-sizing: border-box;
+
+    width: 100%;
+    padding: 12px 14px;
+
+    border: 1px solid #d6d0c8;
+    background: #fafafa;
+
+    font-size: 15px;
+    outline: none;
+}
+
+.form-control-custom:focus {
+    border-color: #b88a42;
+    background: white;
+}
+
+textarea.form-control-custom {
+    resize: vertical;
+}
+
+.booking-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+.btn-back {
+    color: #666;
+    text-decoration: none;
+}
+
+.btn-confirm {
+    background: #b88a42;
+    color: white;
+
+    border: none;
+    padding: 14px 25px;
+
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-confirm:hover {
+    background: #956d31;
+}
+
+.validation-summary {
+    color: #b00020;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 650px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-actions {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    .btn-confirm {
+        width: 100%;
+    }
+}
+/* ===============================
+   LOGIN / REGISTER
+================================ */
+
+.auth-page {
+    min-height: 650px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 70px 20px;
+
+    background: #f7f4ef;
+}
+
+.auth-box {
+    width: 100%;
+    max-width: 480px;
+
+    padding: 40px;
+
+    background: white;
+
+    border: 1px solid #e1dbd2;
+}
+
+.auth-register {
+    max-width: 650px;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-header span {
+    color: #b88a42;
+
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.auth-header h1 {
+    margin: 8px 0;
+
+    font-family: Georgia, serif;
+    font-size: 38px;
+}
+
+.auth-header p {
+    color: #777;
+}
+
+.auth-error {
+    margin-bottom: 20px;
+    padding: 12px 15px;
+
+    background: #ffe7e7;
+    color: #a40000;
+
+    border: 1px solid #ffcccc;
+}
+
+.auth-submit {
+    width: 100%;
+
+    border: none;
+
+    padding: 14px;
+
+    background: #b88a42;
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.auth-submit:hover {
+    background: #956d31;
+}
+
+.auth-bottom {
+    margin-top: 25px;
+    text-align: center;
+
+    color: #666;
+}
+
+.auth-bottom a {
+    color: #a77935;
+    text-decoration: none;
+    font-weight: bold;
+} 
+/* ==================================================
+   NHÂN VIÊN
+================================================== */
+
+.employee-page,
+.employee-orders {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 25px;
+}
+
+.employee-header,
+.orders-header {
+    margin-bottom: 35px;
+}
+
+.employee-header span,
+.orders-header span {
+    color: #b88a42;
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.employee-header h1,
+.orders-header h1 {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    margin: 8px 0;
+}
+
+.employee-header p,
+.orders-header p {
+    color: #777;
+}
+
+
+/* DASHBOARD */
+
+.employee-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.employee-card {
+    background: white;
+    border: 1px solid #e1ddd6;
+
+    padding: 35px;
+
+    text-decoration: none;
+    color: #222;
+
+    transition: 0.2s;
+}
+
+.employee-card:hover {
+    transform: translateY(-5px);
+    color: #222;
+}
+
+.employee-icon {
+    font-size: 42px;
+}
+
+.employee-card h2 {
+    font-family: Georgia, serif;
+}
+
+.employee-card p {
+    color: #777;
+    line-height: 1.6;
+}
+
+.employee-card span {
+    color: #a77935;
+    font-weight: bold;
+}
+
+
+/* ORDER HEADER */
+
+.orders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back-employee {
+    color: #a77935;
+    text-decoration: none;
+}
+
+
+/* DANH SÁCH */
+
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.order-card {
+    background: white;
+
+    border: 1px solid #ded8cf;
+
+    padding: 28px;
+}
+
+.order-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #eee;
+
+    padding-bottom: 18px;
+}
+
+.order-number {
+    color: #a77935 !important;
+    font-size: 11px !important;
+    letter-spacing: 2px !important;
+}
+
+.order-top h2 {
+    margin: 5px 0 0;
+
+    font-family: Georgia, serif;
+}
+
+
+/* TRẠNG THÁI */
+
+.status {
+    padding: 7px 13px;
+
+    border-radius: 20px;
+
+    font-size: 13px !important;
+    letter-spacing: 0 !important;
+}
+
+.status.waiting {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status.accepted {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status.cancelled {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+
+/* THÔNG TIN */
+
+.order-information {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    padding: 25px 0;
+}
+
+.order-information div {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-information span {
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+
+/* GHI CHÚ */
+
+.order-note {
+    padding: 15px;
+
+    background: #f8f5ef;
+
+    margin-bottom: 20px;
+}
+
+.order-note p {
+    margin: 5px 0 0;
+}
+
+
+/* BUTTON */
+
+.order-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.order-actions form {
+    margin: 0;
+}
+
+.btn-approve {
+    border: none;
+
+    background: #357a38;
+    color: white;
+
+    padding: 11px 20px;
+
+    cursor: pointer;
+}
+
+.btn-approve:hover {
+    background: #28602b;
+}
+
+
+.cancel-form {
+    display: flex;
+
+    flex: 1;
+
+    gap: 10px;
+}
+
+.cancel-form input {
+    flex: 1;
+
+    padding: 10px 12px;
+
+    border: 1px solid #ddd;
+}
+
+.btn-cancel {
+    border: none;
+
+    background: #a73737;
+    color: white;
+
+    padding: 11px 20px;
+
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    background: #842929;
+}
+
+
+/* EMPTY */
+
+.empty-orders {
+    background: white;
+
+    padding: 70px;
+
+    text-align: center;
+
+    border: 1px solid #e1ddd6;
+}
+
+.empty-orders > div {
+    font-size: 55px;
+}
+
+
+/* ERROR */
+
+.employee-error {
+    background: #ffe7e7;
+    color: #a40000;
+
+    padding: 12px 15px;
+
+    margin-bottom: 20px;
+}
+
+
+/* LÝ DO HỦY */
+
+.cancel-reason {
+    background: #fff0f0;
+
+    color: #8e2727;
+
+    padding: 13px;
+
+    margin-top: 15px;
+}
+
+
+@media (max-width: 800px) {
+
+    .employee-menu {
+        grid-template-columns: 1fr;
+    }
+
+    .order-information {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .order-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cancel-form {
+        flex-direction: column;
+    }
+
+    .orders-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+.success-page {
+    max-width: 700px;
+    margin: 80px auto;
+    padding: 20px;
+}
+
+.success-box {
+    background: white;
+    border: 1px solid #e1ddd6;
+    padding: 50px;
+    text-align: center;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #d4edda;
+    color: #2e7d32;
+
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.success-box h1 {
+    font-family: Georgia, serif;
+    margin-bottom: 15px;
+}
+
+.success-box p {
+    color: #666;
+}
+
+.success-actions {
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}

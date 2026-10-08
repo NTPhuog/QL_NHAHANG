@@ -1,41 +1,5 @@
 @model IEnumerable<RestaurantManagement.Models.BanAn>
-
-@{
-    ViewData["Title"] = "Bàn ăn";
-}
-
-<section class="table-page">
-    <div class="section-title">
-        <span>CHỌN BÀN</span>
-        <h2>Danh sách bàn ăn</h2>
-        <p>Chọn bàn phù hợp với số lượng khách của bạn.</p>
-    </div>
-
-    <div class="table-grid">
-        @foreach (var ban in Model)
-        {
-            <div class="table-card">
-                <div class="table-icon">🪑</div>
-
-                <h3>@ban.TenBan</h3>
-
-                <p>
-                    Số chỗ:
-                    <strong>@ban.SoChoNgoi người</strong>
-                </p>
-
-                <p>
-                    Trạng thái:
-                    <span class="status">@ban.TrangThai</span>
-                </p>
-
-                <a asp-controller="DatBan"
-                   asp-action="Create"
-                   asp-route-maBan="@ban.MaBan"
-                   class="btn-primary-custom">
-                    Chọn bàn
-                </a>
-            </div>
-        }
-    </div>
-</section>
+@{ViewData["Title"]="Đặt bàn";}
+<h1>Chọn bàn</h1><p>Chọn bàn phù hợp với số khách. Mỗi lượt đặt bàn kéo dài 2 giờ.</p>
+@if(!Model.Any()){<p>Hiện chưa có bàn nhận đặt chỗ.</p>}
+<div class="row g-3">@foreach(var b in Model){<div class="col-md-4"><article class="card p-4 h-100"><h2 class="h4">@b.TenBan</h2><p>@b.SoChoNgoi chỗ</p><a asp-area="" asp-controller="DatBan" asp-action="Create" asp-route-maBan="@b.MaBan" class="btn btn-primary">Chọn bàn</a></article></div>}</div>

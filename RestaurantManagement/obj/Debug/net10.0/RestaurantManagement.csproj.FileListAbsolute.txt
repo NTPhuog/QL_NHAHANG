@@ -342,4 +342,14 @@ E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\RestaurantManagement\bin\Deb
 E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\RestaurantManagement\bin\Debug\net10.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\RestaurantManagement\bin\Debug\net10.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\RestaurantManagement\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
-E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\RestaurantManagement\obj\Debug\net10.0\compressed\mdsc32n4jh-{0}-7swawzh166-7swawzh166.gz
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\RestaurantManagement\obj\Debug\net10.0\RestaurantManagement.sourcelink.json
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\RestaurantManagement\obj\Debug\net10.0\compressed\mdsc32n4jh-{0}-qf1nowshzc-qf1nowshzc.gz
+C:\Users\theph\Documents\Codex\2026-10-08\ph-n-c-ng-tu-n\work\admin-build\appsettings.Development.json
+C:\Users\theph\Documents\Codex\2026-10-08\ph-n-c-ng-tu-n\work\admin-build\appsettings.json
+C:\Users\theph\Documents\Codex\2026-10-08\ph-n-c-ng-tu-n\work\admin-build\RestaurantManagement.staticwebassets.runtime.json
+C:\Users\theph\Documents\Codex\2026-10-08\ph-n-c-ng-tu-n\work\admin-build\RestaurantManagement.staticwebassets.endpoints.json
+C:\Users\theph\Documents\Codex\2026-10-08\ph-n-c-ng-tu-n\work\admin-build\RestaurantManagement.exe
+C:\Users\theph\Documents\Codex\2026-10-08\ph-n-c-ng-tu-n\work\admin-build\RestaurantManagement.deps.json
+C:\Users\theph\Documents\Codex\2026-10-08\ph-n-c-ng-tu-n\work\admin-build\RestaurantManagement.runtimeconfig.json
+C:\Users\theph\Documents\Codex\2026-10-08\ph-n-c-ng-tu-n\work\admin-build\RestaurantManagement.dll
+C:\Users\theph\Documents\Codex\2026-10-08\ph-n-c-ng-tu-n\work\admin-build\RestaurantManagement.pdb

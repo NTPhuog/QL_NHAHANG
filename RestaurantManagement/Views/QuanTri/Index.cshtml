@@ -1,0 +1,5 @@
+@model IEnumerable<RestaurantManagement.Models.DatBan>
+@{ViewData["Title"]="Quản trị nhà hàng";}
+<h1>Quản trị nhà hàng</h1><div class="row g-3 my-3">@foreach(var tile in new[]{("Bàn",(int)ViewBag.Ban),("Khách hàng",(int)ViewBag.Khach),("Nhân viên",(int)ViewBag.NhanVien),("Chờ xác nhận",(int)ViewBag.Cho)}){<div class="col-md-3"><div class="card p-4"><strong class="display-6">@tile.Item2</strong>@tile.Item1</div></div>}</div>
+<nav class="d-flex gap-3 flex-wrap mb-4"><a href="/BanAn">Quản lý bàn</a><a href="/MonAn">Quản lý món</a><a href="/DanhMucMon">Danh mục món</a><a href="/NhanSu">Nhân viên</a><a href="/KhachHang">Khách hàng</a><a href="/KhuyenMai">Khuyến mãi</a><a href="/NhanVien/DatBan">Điều phối đặt bàn</a></nav>
+<h2 class="h4">10 yêu cầu gần nhất</h2><div class="table-responsive"><table class="table"><thead><tr><th>Mã</th><th>Khách</th><th>Bàn</th><th>Thời gian</th><th>Trạng thái</th></tr></thead><tbody>@foreach(var d in Model){<tr><td>@d.MaDatBan</td><td>@d.MaKhachHangNavigation.HoTen</td><td>@d.MaBanNavigation.TenBan</td><td>@d.NgayDat @d.GioDat</td><td>@d.TrangThai</td></tr>}</tbody></table></div>

@@ -1,0 +1,6 @@
+
+# Three independent apps
+Restaurant.*/bin/
+Restaurant.*/obj/
+.runlogs/
+.codex-backups/

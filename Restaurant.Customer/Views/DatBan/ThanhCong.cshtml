@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Đặt bàn thành công";
+}
+
+<section class="success-page">
+
+    <div class="success-box">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h1>Đặt bàn thành công</h1>
+
+        <p>
+            Yêu cầu đặt bàn của bạn đã được gửi.
+        </p>
+
+        <p>
+            Trạng thái hiện tại:
+            <strong>Chờ xác nhận</strong>
+        </p>
+
+        <div class="success-actions">
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="btn-primary-custom">
+                Về trang chủ
+            </a>
+
+            <a asp-controller="BanAn"
+               asp-action="Index"
+               class="btn-back">
+                Đặt bàn khác
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

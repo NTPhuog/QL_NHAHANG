@@ -1,0 +1,2 @@
+@model IEnumerable<RestaurantManagement.Models.NhanVien>
+<h1>Nhân viên</h1><a class="btn btn-primary mb-3" asp-action="Edit">Thêm nhân viên</a><div class="table-responsive"><table class="table"><thead><tr><th>Họ tên</th><th>Email</th><th>Điện thoại</th><th>Chức vụ</th><th>Trạng thái</th><th></th></tr></thead><tbody>@foreach(var u in Model){<tr><td>@u.HoTen</td><td>@u.Email</td><td>@u.SoDienThoai</td><td>@u.ChucVu</td><td>@u.TrangThai</td><td><a asp-action="Edit" asp-route-id="@u.MaNhanVien">Sửa / khóa tài khoản</a></td></tr>}</tbody></table></div>

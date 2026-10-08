@@ -1,69 +1,9 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RestaurantManagement</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/RestaurantManagement.styles.css" asp-append-version="true" />
-</head>
-<body>
-<header class="main-header">
-    <nav class="navbar">
-        <a class="logo" asp-controller="Home" asp-action="Index">
-            RESTAURANT
-        </a>
+<!DOCTYPE html><html lang="vi"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>@ViewData["Title"] · Nhà hàng</title><link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/><link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/></head><body>
+<header class="main-header"><nav class="navbar container gap-3"><a class="logo" href="/">RESTAURANT</a><div class="nav-links d-flex gap-3 flex-wrap"><a href="/MonAn">Thực đơn</a><a href="/BanAn">Đặt bàn</a><a href="/KhuyenMai">Khuyến mãi</a>
 
-        <div class="nav-links">
-            <a asp-controller="Home" asp-action="Index">Trang chủ</a>
-            <a asp-controller="MonAn" asp-action="Index">Thực đơn</a>
-            <a asp-controller="BanAn" asp-action="Index">Bàn ăn</a>
-            <a asp-controller="KhuyenMai" asp-action="Index">Khuyến mãi</a>
-        </div>
 
-        <div class="nav-account">
+@if(Context.Session.GetString("Role")=="KhachHang"){<a href="/DatBan/LichSu">Lịch sử đặt bàn</a>}
+</div><div class="nav-account">@if(Context.Session.GetInt32("UserId")!=null){<span class="text-white">@Context.Session.GetString("HoTen")</span><form asp-area="" asp-controller="TaiKhoan" asp-action="DangXuat" method="post" class="d-inline"><button class="btn btn-outline-light ms-2">Đăng xuất</button></form>}else{<a class="btn-login" href="/TaiKhoan/DangNhap">Đăng nhập</a>}</div></nav></header>
+<div class="container py-4"><main>@if(TempData["ThongBao"] is string message){<div class="alert alert-success" role="status">@message</div>}@if(TempData["Loi"] is string error){<div class="alert alert-danger" role="alert">@error</div>}@RenderBody()</main></div><footer class="border-top p-4 text-center text-muted">Nhà hàng · Đặt bàn trực tuyến</footer><script src="~/lib/jquery/dist/jquery.min.js"></script><script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script><script src="~/js/site.js" asp-append-version="true"></script>@await RenderSectionAsync("Scripts",required:false)</body></html>
 
-    @if (Context.Session.GetInt32("MaKhachHang") != null)
-    {
-        <span style="color:white; margin-right:15px;">
-            Xin chào,
-            @Context.Session.GetString("HoTen")
-        </span>
 
-        <a class="btn-login"
-           asp-controller="TaiKhoan"
-           asp-action="DangXuat">
-            Đăng xuất
-        </a>
-    }
-    else
-    {
-        <a class="btn-login"
-           asp-controller="TaiKhoan"
-           asp-action="DangNhap">
-            Đăng nhập
-        </a>
-    }
-
-</div>
-    </nav>
-</header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - RestaurantManagement - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html>

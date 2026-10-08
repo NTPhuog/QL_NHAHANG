@@ -1,0 +1,3 @@
+@model RestaurantManagement.Models.BanAn
+@{ViewData["Title"]="Thêm bàn";}
+<h1>Thêm bàn</h1><form asp-action="Create" method="post"><div asp-validation-summary="All" class="text-danger"></div><label asp-for="TenBan">Tên bàn</label><input asp-for="TenBan" maxlength="50" required class="form-control"/><label asp-for="SoChoNgoi">Số chỗ</label><input asp-for="SoChoNgoi" type="number" min="1" max="100" required class="form-control"/><label asp-for="TrangThai">Trạng thái</label><select asp-for="TrangThai" class="form-select"><option>Trống</option><option>Bảo trì</option><option>Ngừng phục vụ</option></select><button class="btn btn-primary mt-3">Lưu bàn</button><a asp-action="Index" class="btn">Quay lại</a></form>

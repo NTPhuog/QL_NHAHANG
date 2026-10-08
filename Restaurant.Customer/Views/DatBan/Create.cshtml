@@ -1,0 +1,9 @@
+@model RestaurantManagement.Models.DatBan
+@{ViewData["Title"]="Đặt bàn";}
+<section class="booking-page"><h1>Đặt bàn @ViewBag.TenBan</h1><p>Tối đa @ViewBag.SoChoNgoi khách. Mỗi lượt 2 giờ; nhận khách từ 10:00 đến 20:00.</p>
+<form method="post" asp-action="Create"><div asp-validation-summary="All" class="text-danger"></div><input asp-for="MaBan" type="hidden"/>
+<label asp-for="NgayDat">Ngày đặt</label><input asp-for="NgayDat" type="date" class="form-control" required/>
+<label asp-for="GioDat">Giờ đặt</label><input asp-for="GioDat" type="time" class="form-control" min="10:00" max="20:00" required/>
+<label asp-for="SoLuongKhach">Số khách</label><input asp-for="SoLuongKhach" type="number" min="1" max="@ViewBag.SoChoNgoi" class="form-control" required/>
+<label asp-for="GhiChu">Ghi chú</label><textarea asp-for="GhiChu" maxlength="255" class="form-control"></textarea>
+<button class="btn btn-primary mt-3">Gửi yêu cầu đặt bàn</button></form></section>

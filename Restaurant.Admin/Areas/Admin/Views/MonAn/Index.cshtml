@@ -1,0 +1,4 @@
+@model IEnumerable<RestaurantManagement.Models.MonAn>
+@{ViewData["Title"]="Thực đơn";var admin=Context.Session.GetString("Role")=="Admin";}
+<h1>Thực đơn</h1>@if(admin){<a asp-action="Create" class="btn btn-primary mb-3">Thêm món</a>}
+<div class="row g-3">@foreach(var m in Model){<div class="col-md-4"><article class="card p-4 h-100"><small>@m.MaDanhMucNavigation.TenDanhMuc</small><h2 class="h4">@m.TenMon</h2><p>@m.MoTa</p><strong>@m.Gia.ToString("N0") ₫</strong>@if(admin){<p>@m.TrangThai</p><div><a asp-action="Edit" asp-route-id="@m.MaMon">Sửa</a> · <a asp-action="Delete" asp-route-id="@m.MaMon">Xóa</a></div>}</article></div>}</div>

@@ -1,0 +1,10 @@
+@model RestaurantManagement.Models.KhuyenMai
+@{ViewData["Title"]="Quản lý khuyến mãi";}
+<h1>Thông tin khuyến mãi</h1><form asp-action="Edit" method="post" class="col-lg-7"><div asp-validation-summary="All" class="text-danger"></div><input asp-for="MaKhuyenMai" type="hidden"/>
+<label asp-for="TenKhuyenMai">Tên khuyến mãi</label><input asp-for="TenKhuyenMai" maxlength="100" required class="form-control"/>
+<label asp-for="MoTa">Mô tả</label><textarea asp-for="MoTa" maxlength="255" class="form-control"></textarea>
+<label asp-for="NgayBatDau">Ngày bắt đầu</label><input asp-for="NgayBatDau" type="date" required class="form-control"/>
+<label asp-for="NgayKetThuc">Ngày kết thúc</label><input asp-for="NgayKetThuc" type="date" required class="form-control"/>
+<label asp-for="PhanTramGiam">Giảm (%)</label><input asp-for="PhanTramGiam" type="number" min="0" max="100" step="0.01" required class="form-control"/>
+<label asp-for="TrangThai">Trạng thái</label><select asp-for="TrangThai" class="form-select"><option>Hoạt động</option><option>Ngừng</option></select>
+<button class="btn btn-primary mt-3">Lưu khuyến mãi</button><a asp-action="Index" class="btn">Quay lại</a></form>

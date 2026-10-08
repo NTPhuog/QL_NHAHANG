@@ -1,0 +1,18 @@
+@{ Layout = "/Views/Shared/_BackOfficeLayout.cshtml"; }
+<div class="row g-4">
+    <aside class="col-lg-3">
+        <nav class="list-group" aria-label="Quản trị nhà hàng">
+            <a class="list-group-item list-group-item-action" asp-area="Admin" asp-controller="Home" asp-action="Index">Tổng quan</a>
+            <a class="list-group-item list-group-item-action" asp-area="Admin" asp-controller="BanAn" asp-action="Index">Quản lý bàn</a>
+            <a class="list-group-item list-group-item-action" asp-area="Admin" asp-controller="MonAn" asp-action="Index">Quản lý món ăn</a>
+            <a class="list-group-item list-group-item-action" asp-area="Admin" asp-controller="DanhMucMon" asp-action="Index">Danh mục món</a>
+            <a class="list-group-item list-group-item-action" asp-area="Admin" asp-controller="DatBan" asp-action="Index">Quản lý đặt bàn</a>
+            <a class="list-group-item list-group-item-action" asp-area="Admin" asp-controller="NhanSu" asp-action="Index">Quản lý nhân viên</a>
+            <a class="list-group-item list-group-item-action" asp-area="Admin" asp-controller="KhachHang" asp-action="Index">Quản lý khách hàng</a>
+            <a class="list-group-item list-group-item-action" asp-area="Admin" asp-controller="KhuyenMai" asp-action="Index">Quản lý khuyến mãi</a>
+        </nav>
+    </aside>
+    <section class="col-lg-9">@RenderBody()</section>
+</div>
+@section Scripts { @await RenderSectionAsync("Scripts", required: false) }
+

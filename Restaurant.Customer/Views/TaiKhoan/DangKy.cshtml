@@ -1,0 +1,106 @@
+@{
+    ViewData["Title"] = "Đăng ký";
+}
+
+<section class="auth-page">
+
+    <div class="auth-box auth-register">
+
+        <div class="auth-header">
+            <span>TÀI KHOẢN</span>
+            <h1>Đăng ký</h1>
+
+            <p>
+                Tạo tài khoản để đặt bàn
+                và theo dõi yêu cầu.
+            </p>
+        </div>
+
+        @if (ViewBag.Loi != null)
+        {
+            <div class="auth-error">
+                @ViewBag.Loi
+            </div>
+        }
+
+        <form asp-controller="TaiKhoan"
+              asp-action="DangKy"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-group-custom">
+                <label>Họ tên *</label>
+
+                <input type="text"
+                       name="hoTen"
+                       class="form-control-custom"
+                       required />
+            </div>
+
+            <div class="form-group-custom">
+                <label>Số điện thoại</label>
+
+                <input type="tel"
+                       name="soDienThoai"
+                       class="form-control-custom" />
+            </div>
+
+            <div class="form-group-custom">
+                <label>Email *</label>
+
+                <input type="email"
+                       name="email"
+                       class="form-control-custom"
+                       required />
+            </div>
+
+            <div class="form-group-custom">
+                <label>Địa chỉ</label>
+
+                <input type="text"
+                       name="diaChi"
+                       class="form-control-custom" />
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group-custom">
+                    <label>Mật khẩu *</label>
+
+                    <input type="password"
+                           name="matKhau"
+                           class="form-control-custom"
+                           required />
+                </div>
+
+                <div class="form-group-custom">
+                    <label>Nhập lại mật khẩu *</label>
+
+                    <input type="password"
+                           name="nhapLaiMatKhau"
+                           class="form-control-custom"
+                           required />
+                </div>
+
+            </div>
+
+            <button type="submit"
+                    class="auth-submit">
+                TẠO TÀI KHOẢN
+            </button>
+
+        </form>
+
+        <div class="auth-bottom">
+            Đã có tài khoản?
+
+            <a asp-controller="TaiKhoan"
+               asp-action="DangNhap">
+                Đăng nhập
+            </a>
+        </div>
+
+    </div>
+
+</section>

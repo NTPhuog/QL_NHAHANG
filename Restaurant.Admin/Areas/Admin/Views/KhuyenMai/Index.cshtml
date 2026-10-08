@@ -1,0 +1,3 @@
+@model IEnumerable<RestaurantManagement.Models.KhuyenMai>
+<h1>Khuyến mãi</h1>@if(Context.Session.GetString("Role")=="Admin"){<a class="btn btn-primary" asp-action="Create">Thêm khuyến mãi</a>}
+@foreach(var k in Model){<article class="card p-4 my-3"><h2 class="h4">@k.TenKhuyenMai</h2><p>@k.MoTa</p><p>Giảm @k.PhanTramGiam% · @k.NgayBatDau.ToString("dd/MM/yyyy") – @k.NgayKetThuc.ToString("dd/MM/yyyy")</p>@if(Context.Session.GetString("Role")=="Admin"){<div>@k.TrangThai · <a asp-action="Edit" asp-route-id="@k.MaKhuyenMai">Sửa</a> · <a asp-action="Delete" asp-route-id="@k.MaKhuyenMai">Xóa</a></div>}</article>}

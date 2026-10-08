@@ -1,0 +1,1 @@
+<Solution><Project Path="Restaurant.Shared/Restaurant.Shared.csproj"/><Project Path="Restaurant.Customer/Restaurant.Customer.csproj"/><Project Path="Restaurant.Staff/Restaurant.Staff.csproj"/><Project Path="Restaurant.Admin/Restaurant.Admin.csproj"/></Solution>

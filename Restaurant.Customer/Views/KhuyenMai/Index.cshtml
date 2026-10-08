@@ -1,0 +1,4 @@
+@model IEnumerable<RestaurantManagement.Models.KhuyenMai>
+@{ViewData["Title"]="Ưu đãi";}
+<h1>Ưu đãi dành cho bạn</h1>@if(!Model.Any()){<p>Hiện chưa có chương trình ưu đãi. Hãy quay lại sau nhé.</p>}
+@foreach(var k in Model){<article class="card p-4 my-3"><h2 class="h4">@k.TenKhuyenMai</h2><p>@k.MoTa</p><p>Giảm @k.PhanTramGiam% · @k.NgayBatDau.ToString("dd/MM/yyyy") – @k.NgayKetThuc.ToString("dd/MM/yyyy")</p></article>}

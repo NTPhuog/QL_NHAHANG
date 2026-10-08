@@ -1,0 +1,123 @@
+
+@{
+    ViewData["Title"] = "Trang nhân viên";
+}
+
+<style>
+    .employee-page {
+        max-width: 1100px;
+        margin: 30px auto;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .employee-header {
+        background: #243b55;
+        color: white;
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+    }
+
+    .employee-header h1 {
+        font-size: 28px;
+        font-weight: 700;
+        margin: 10px 0;
+    }
+
+    .employee-header p {
+        color: #d5deea;
+        margin: 0;
+    }
+
+    .employee-label {
+        font-size: 12px;
+        letter-spacing: 1px;
+        color: #b8cbe0;
+    }
+
+    .employee-menu {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+    }
+
+    .employee-card {
+        display: block;
+        background: white;
+        padding: 25px;
+        border: 1px solid #e1e5eb;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #26364a;
+        transition: .2s;
+    }
+
+    .employee-card:hover {
+        border-color: #456b96;
+        box-shadow: 0 5px 15px rgba(0,0,0,.08);
+        color: #26364a;
+    }
+
+    .employee-icon {
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .employee-card h2 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .employee-card p {
+        font-size: 14px;
+        color: #6b7280;
+        line-height: 1.6;
+    }
+
+    .employee-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: #2563a6;
+        font-weight: 600;
+        font-size: 14px;
+    }
+</style>
+
+<div class="employee-page">
+
+    <div class="employee-header">
+        <span class="employee-label">KHU VỰC NHÂN VIÊN</span>
+
+        <h1>Quản lý nhà hàng</h1>
+
+        <p>
+            Tiếp nhận và xử lý các yêu cầu đặt bàn của khách hàng.
+        </p>
+    </div>
+
+    <div class="employee-menu">
+
+        <a asp-area="NhanVien"
+           asp-controller="DatBan"
+           asp-action="Index"
+           class="employee-card">
+
+            <div class="employee-icon">📋</div>
+
+            <h2>Điều phối đặt bàn</h2>
+
+            <p>
+                Xem danh sách đặt bàn, duyệt đơn,
+                nhận bàn và hoàn thành lượt phục vụ.
+            </p>
+
+            <span class="employee-link">
+                Xem danh sách →
+            </span>
+
+        </a>
+
+    </div>
+
+</div>

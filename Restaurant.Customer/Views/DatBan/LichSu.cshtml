@@ -1,0 +1,116 @@
+@model IEnumerable<RestaurantManagement.Models.DatBan>
+
+@{
+    ViewData["Title"] = "Lịch sử đặt bàn";
+}
+
+<section class="history-page">
+
+    <div class="booking-header">
+        <span>TÀI KHOẢN</span>
+        <h1>Lịch sử đặt bàn</h1>
+        <p>Theo dõi các yêu cầu đặt bàn của bạn.</p>
+    </div>
+
+    @if (TempData["ThongBao"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["ThongBao"]
+        </div>
+    }
+
+    @if (TempData["Loi"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["Loi"]
+        </div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="empty-orders">
+            <h3>Bạn chưa có đơn đặt bàn nào.</h3>
+
+            <a asp-controller="BanAn"
+               asp-action="Index"
+               class="btn-primary-custom">
+                Đặt bàn ngay
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="history-list">
+
+            @foreach (var item in Model)
+            {
+                <div class="history-card">
+
+                    <div>
+                        <small>ĐƠN #@item.MaDatBan</small>
+
+                        <h3>
+                            @item.MaBanNavigation?.TenBan
+                        </h3>
+
+                        <p>
+                            📅 @item.NgayDat
+                            &nbsp; | &nbsp;
+                            🕐 @item.GioDat
+                        </p>
+
+                        <p>
+                            👥 @item.SoLuongKhach người
+                        </p>
+
+                        @if (!string.IsNullOrWhiteSpace(item.GhiChu))
+                        {
+                            <p>
+                                <strong>Ghi chú:</strong>
+                                @item.GhiChu
+                            </p>
+                        }
+                    </div>
+
+                    <div class="history-status">
+
+                        <strong>
+                            @item.TrangThai
+                        </strong>
+
+                        @if (item.TrangThai == "Chờ xác nhận")
+                        {
+                            <form asp-action="HuyDon"
+                                  method="post">
+
+                                @Html.AntiForgeryToken()
+
+                                <input type="hidden"
+                                       name="id"
+                                       value="@item.MaDatBan" />
+
+                                <button type="submit"
+                                        class="btn-cancel">
+                                    Hủy đơn
+                                </button>
+
+                            </form>
+                        }
+
+                        @if (item.TrangThai == "Đã hủy"
+                            && !string.IsNullOrWhiteSpace(item.LyDoHuy))
+                        {
+                            <small>
+                                @item.LyDoHuy
+                            </small>
+                        }
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</section>

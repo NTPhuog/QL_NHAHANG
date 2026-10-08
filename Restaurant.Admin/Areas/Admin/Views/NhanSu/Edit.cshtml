@@ -1,0 +1,6 @@
+@model RestaurantManagement.Models.NhanVien
+<h1>@(Model.MaNhanVien==0?"Thêm":"Sửa") nhân viên</h1><form method="post" asp-action="Edit"><div asp-validation-summary="All" class="text-danger"></div><input name="id" value="@Model.MaNhanVien" type="hidden"/>
+<label asp-for="HoTen">Họ tên</label><input asp-for="HoTen" maxlength="100" required class="form-control"/><label asp-for="Email">Email</label><input asp-for="Email" type="email" maxlength="100" required class="form-control"/>
+<label asp-for="SoDienThoai">Điện thoại</label><input asp-for="SoDienThoai" maxlength="15" class="form-control"/><label asp-for="ChucVu">Chức vụ</label><input asp-for="ChucVu" maxlength="50" class="form-control"/>
+<label asp-for="TrangThai">Trạng thái</label><select asp-for="TrangThai" class="form-select"><option>Hoạt động</option><option>Khóa</option></select>
+<label for="matKhau">Mật khẩu mới (để trống khi giữ nguyên)</label><input id="matKhau" name="matKhau" type="password" autocomplete="new-password" minlength="8" maxlength="128" class="form-control"/><button class="btn btn-primary mt-3">Lưu</button><a asp-action="Index" class="btn">Quay lại</a></form>

@@ -999,3 +999,59 @@ textarea.form-control-custom {
     justify-content: center;
     gap: 20px;
 }
+.history-page {
+    max-width: 1000px;
+    margin: auto;
+    padding: 70px 25px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.history-card {
+    background: white;
+    border: 1px solid #ddd8d0;
+
+    padding: 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-card h3 {
+    font-family: Georgia, serif;
+    margin: 5px 0 15px;
+}
+
+.history-card p {
+    margin: 6px 0;
+    color: #666;
+}
+
+.history-status {
+    text-align: right;
+}
+
+.history-status strong {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #a77935;
+}
+
+@media (max-width: 650px) {
+    .history-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .history-status {
+        text-align: left;
+    }
+}

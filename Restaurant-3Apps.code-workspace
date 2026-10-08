@@ -1,0 +1,119 @@
+{
+  "tasks": {
+    "tasks": [
+      {
+        "type": "process",
+        "label": "Build 3 ứng dụng",
+        "problemMatcher": "$msCompile",
+        "command": "dotnet",
+        "args": [
+          "build",
+          "Restaurant.slnx",
+          "-m:1"
+        ]
+      },
+      {
+        "problemMatcher": {
+          "pattern": {
+            "message": 0,
+            "regexp": "^__UNUSED__$"
+          },
+          "background": {
+            "beginsPattern": ".*",
+            "activeOnStart": true,
+            "endsPattern": ".*Now listening on:.*"
+          },
+          "owner": "restaurant"
+        },
+        "args": [
+          "run",
+          "--no-build",
+          "--project",
+          "Restaurant.Customer"
+        ],
+        "dependsOn": "Build 3 ứng dụng",
+        "presentation": {
+          "panel": "dedicated",
+          "reveal": "always"
+        },
+        "isBackground": true,
+        "type": "process",
+        "command": "dotnet",
+        "label": "Chạy khách hàng"
+      },
+      {
+        "problemMatcher": {
+          "pattern": {
+            "message": 0,
+            "regexp": "^__UNUSED__$"
+          },
+          "background": {
+            "beginsPattern": ".*",
+            "activeOnStart": true,
+            "endsPattern": ".*Now listening on:.*"
+          },
+          "owner": "restaurant"
+        },
+        "args": [
+          "run",
+          "--no-build",
+          "--project",
+          "Restaurant.Staff"
+        ],
+        "dependsOn": "Build 3 ứng dụng",
+        "presentation": {
+          "panel": "dedicated",
+          "reveal": "always"
+        },
+        "isBackground": true,
+        "type": "process",
+        "command": "dotnet",
+        "label": "Chạy nhân viên"
+      },
+      {
+        "problemMatcher": {
+          "pattern": {
+            "message": 0,
+            "regexp": "^__UNUSED__$"
+          },
+          "background": {
+            "beginsPattern": ".*",
+            "activeOnStart": true,
+            "endsPattern": ".*Now listening on:.*"
+          },
+          "owner": "restaurant"
+        },
+        "args": [
+          "run",
+          "--no-build",
+          "--project",
+          "Restaurant.Admin"
+        ],
+        "dependsOn": "Build 3 ứng dụng",
+        "presentation": {
+          "panel": "dedicated",
+          "reveal": "always"
+        },
+        "isBackground": true,
+        "type": "process",
+        "command": "dotnet",
+        "label": "Chạy admin"
+      },
+      {
+        "label": "Chạy cả ba",
+        "dependsOrder": "parallel",
+        "dependsOn": [
+          "Chạy khách hàng",
+          "Chạy nhân viên",
+          "Chạy admin"
+        ]
+      }
+    ],
+    "version": "2.0.0"
+  },
+  "folders": [
+    {
+      "path": "."
+    }
+  ]
+}

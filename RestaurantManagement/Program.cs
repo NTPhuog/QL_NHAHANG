@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+if (builder.Configuration["DataProtection:KeyPath"] is string keyPath) builder.Services.AddDataProtection().PersistKeysToFileSystem(new DirectoryInfo(keyPath));
 
 // MVC
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options => { options.Filters.Add<RestaurantManagement.Security.AccessFilter>(); options.Filters.Add(new Microsoft.AspNetCore.Mvc.AutoValidateAntiforgeryTokenAttribute()); });
+builder.Services.AddDistributedMemoryCache();
 
 // Database
 builder.Services.AddDbContext<QuanLyNhaHangContext>(options =>
@@ -21,6 +24,20 @@ builder.Services.AddSession(options =>
 });
 
 var app = builder.Build();
+if (args.Contains("--create-admin"))
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<QuanLyNhaHangContext>();
+    if (await db.Admins.AnyAsync()) throw new InvalidOperationException("Đã có admin; chức năng này chỉ dùng để khởi tạo lần đầu.");
+    var email = Environment.GetEnvironmentVariable("RESTAURANT_ADMIN_EMAIL")?.Trim().ToLowerInvariant();
+    var password = Environment.GetEnvironmentVariable("RESTAURANT_ADMIN_PASSWORD");
+    if (email == null || email.Length > 100 || !new System.ComponentModel.DataAnnotations.EmailAddressAttribute().IsValid(email) || password == null || password.Length < 12 || password.Length > 128)
+        throw new InvalidOperationException("Cần email hợp lệ và mật khẩu admin từ 12–128 ký tự qua biến môi trường RESTAURANT_ADMIN_EMAIL / RESTAURANT_ADMIN_PASSWORD.");
+    db.Admins.Add(new Admin { HoTen = "Quản trị viên", Email = email, MatKhau = RestaurantManagement.Security.Passwords.Hash(password), TrangThai = "Hoạt động" });
+    await db.SaveChangesAsync();
+    Console.WriteLine("Đã tạo admin đầu tiên.");
+    return;
+}
 
 // =========================
 // Middleware
@@ -54,3 +71,5 @@ app.MapControllerRoute(
     .WithStaticAssets();
 
 app.Run();
+
+

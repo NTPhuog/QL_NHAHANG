@@ -1,52 +1,11 @@
 @model RestaurantManagement.Models.MonAn
-
-@{
-    ViewData["Title"] = "Create";
-}
-
-<h1>Create</h1>
-
-<h4>MonAn</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="MaDanhMuc" class="control-label"></label>
-                <select asp-for="MaDanhMuc" class ="form-control" asp-items="ViewBag.MaDanhMuc"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="TenMon" class="control-label"></label>
-                <input asp-for="TenMon" class="form-control" />
-                <span asp-validation-for="TenMon" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MoTa" class="control-label"></label>
-                <input asp-for="MoTa" class="form-control" />
-                <span asp-validation-for="MoTa" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gia" class="control-label"></label>
-                <input asp-for="Gia" class="form-control" />
-                <span asp-validation-for="Gia" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="HinhAnh" class="control-label"></label>
-                <input asp-for="HinhAnh" class="form-control" />
-                <span asp-validation-for="HinhAnh" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+@{ViewData["Title"]="Quản lý món ăn";}
+<h1>Thông tin món ăn</h1><form asp-action="Create" method="post" class="col-lg-7"><div asp-validation-summary="All" class="text-danger"></div>
+<input asp-for="MaMon" type="hidden"/>
+<label asp-for="TenMon">Tên món</label><input asp-for="TenMon" maxlength="100" required class="form-control"/>
+<label asp-for="MaDanhMuc">Danh mục</label><select asp-for="MaDanhMuc" asp-items="ViewBag.MaDanhMuc" class="form-select"><option value="">Chọn danh mục</option></select>
+<label asp-for="Gia">Giá (đồng)</label><input asp-for="Gia" type="number" step="0.01" min="0.01" max="999999999" required class="form-control"/>
+<label asp-for="MoTa">Mô tả</label><textarea asp-for="MoTa" maxlength="255" class="form-control"></textarea>
+<label asp-for="HinhAnh">Đường dẫn ảnh</label><input asp-for="HinhAnh" maxlength="255" class="form-control"/>
+<label asp-for="TrangThai">Trạng thái</label><select asp-for="TrangThai" class="form-select"><option>Hiển thị</option><option>Ẩn</option><option>Hết món</option></select>
+<button class="btn btn-primary mt-3">Lưu món</button><a asp-action="Index" class="btn">Quay lại</a></form>

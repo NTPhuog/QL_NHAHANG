@@ -1,0 +1,5 @@
+@model IEnumerable<RestaurantManagement.Models.BanAn>
+@{ViewData["Title"]="Đặt bàn";}
+<h1>Chọn bàn</h1><p>Chọn bàn phù hợp với số khách. Mỗi lượt đặt bàn kéo dài 2 giờ.</p>
+@if(!Model.Any()){<p>Hiện chưa có bàn nhận đặt chỗ.</p>}
+<div class="row g-3">@foreach(var b in Model){<div class="col-md-4"><article class="card p-4 h-100"><h2 class="h4">@b.TenBan</h2><p>@b.SoChoNgoi chỗ</p><a asp-area="" asp-controller="DatBan" asp-action="Create" asp-route-maBan="@b.MaBan" class="btn btn-primary">Chọn bàn</a></article></div>}</div>

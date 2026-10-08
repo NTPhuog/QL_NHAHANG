@@ -1,0 +1,5 @@
+@model IEnumerable<RestaurantManagement.Models.BanAn>
+@{ViewData["Title"]="Bàn ăn";var admin=Context.Session.GetString("Role")=="Admin";}
+<h1>Bàn ăn</h1><p>Mỗi lượt đặt bàn kéo dài 2 giờ. Hệ thống kiểm tra lịch khi bạn gửi yêu cầu.</p>
+@if(admin){<a asp-action="Create" class="btn btn-primary mb-3">Thêm bàn</a>}
+<div class="row g-3">@foreach(var b in Model){<div class="col-md-4"><article class="card p-4 h-100"><h2 class="h4">@b.TenBan</h2><p>@b.SoChoNgoi chỗ · @b.TrangThai</p>@if(admin){<div><a asp-action="Edit" asp-route-id="@b.MaBan">Sửa</a> · <a asp-action="Delete" asp-route-id="@b.MaBan">Xóa</a></div>}else if(b.TrangThai=="Trống"){<a asp-controller="DatBan" asp-action="Create" asp-route-maBan="@b.MaBan" class="btn btn-primary">Chọn bàn</a>}else{<span>Hiện không nhận đặt chỗ</span>}</article></div>}</div>

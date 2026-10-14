@@ -1,4 +1,4 @@
 @{Layout="/Views/Shared/_BackOfficeLayout.cshtml";}
-<nav class="d-flex gap-3 mb-4" aria-label="Nhân viên"><a asp-area="NhanVien" asp-controller="Home" asp-action="Index">Trang nhân viên</a><a asp-area="NhanVien" asp-controller="DatBan" asp-action="Index">Tiếp nhận và phục vụ đặt bàn</a></nav>
+<nav class="d-flex gap-3 mb-4" aria-label="Nhân viên"><a asp-area="NhanVien" asp-controller="Home" asp-action="Index">Trang nhân viên</a><a asp-area="NhanVien" asp-controller="DatBan" asp-action="Index">Tiếp nhận và phục vụ đặt bàn</a><a asp-area="NhanVien" asp-controller="DatBan" asp-action="CheckIn">Quét QR / Check-in</a><a asp-area="NhanVien" asp-controller="DatBan" asp-action="Index" asp-route-archive="true">Hóa đơn đã xuất</a></nav>
 @RenderBody()
 @section Scripts { @await RenderSectionAsync("Scripts",required:false) }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "e:\\Do_an\\Năm 4\\Đồ án môn học_ST5\\QL_NHAHANG\\Verification\\Verification.csproj": {}
+    "E:\\Do_an\\Năm 4\\Đồ án môn học_ST5\\QL_NHAHANG\\Verification\\Verification.csproj": {}
   },
   "projects": {
-    "e:\\Do_an\\Năm 4\\Đồ án môn học_ST5\\QL_NHAHANG\\Verification\\Verification.csproj": {
+    "E:\\Do_an\\Năm 4\\Đồ án môn học_ST5\\QL_NHAHANG\\Verification\\Verification.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "e:\\Do_an\\Năm 4\\Đồ án môn học_ST5\\QL_NHAHANG\\Verification\\Verification.csproj",
+        "projectUniqueName": "E:\\Do_an\\Năm 4\\Đồ án môn học_ST5\\QL_NHAHANG\\Verification\\Verification.csproj",
         "projectName": "Verification",
-        "projectPath": "e:\\Do_an\\Năm 4\\Đồ án môn học_ST5\\QL_NHAHANG\\Verification\\Verification.csproj",
+        "projectPath": "E:\\Do_an\\Năm 4\\Đồ án môn học_ST5\\QL_NHAHANG\\Verification\\Verification.csproj",
         "packagesPath": "C:\\Users\\theph\\.nuget\\packages\\",
-        "outputPath": "e:\\Do_an\\Năm 4\\Đồ án môn học_ST5\\QL_NHAHANG\\Verification\\obj\\",
+        "outputPath": "E:\\Do_an\\Năm 4\\Đồ án môn học_ST5\\QL_NHAHANG\\Verification\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

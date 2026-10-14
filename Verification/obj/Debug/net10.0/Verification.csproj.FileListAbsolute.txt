@@ -1,0 +1,15 @@
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\bin\Debug\net10.0\Verification.exe
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\bin\Debug\net10.0\Verification.deps.json
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\bin\Debug\net10.0\Verification.runtimeconfig.json
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\bin\Debug\net10.0\Verification.dll
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\bin\Debug\net10.0\Verification.pdb
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\obj\Debug\net10.0\Verification.GeneratedMSBuildEditorConfig.editorconfig
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\obj\Debug\net10.0\Verification.AssemblyInfoInputs.cache
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\obj\Debug\net10.0\Verification.AssemblyInfo.cs
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\obj\Debug\net10.0\Verification.csproj.CoreCompileInputs.cache
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\obj\Debug\net10.0\Verification.sourcelink.json
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\obj\Debug\net10.0\Verification.dll
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\obj\Debug\net10.0\refint\Verification.dll
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\obj\Debug\net10.0\Verification.pdb
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\obj\Debug\net10.0\Verification.genruntimeconfig.cache
+E:\Do_an\Năm 4\Đồ án môn học_ST5\QL_NHAHANG\Verification\obj\Debug\net10.0\ref\Verification.dll

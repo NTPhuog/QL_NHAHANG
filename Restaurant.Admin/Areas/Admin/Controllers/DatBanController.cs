@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using RestaurantManagement.Models;
 namespace RestaurantManagement.Areas.Admin.Controllers;
 [Area("Admin")]
-public class DatBanController(QuanLyNhaHangContext db, ILogger<DatBanController> logger) : Controller
+public class DatBanController(QuanLyNhaHangContext db, ILogger<DatBanController> logger, RestaurantManagement.Services.BookingWorkflow workflow) : Controller
 {
     public async Task<IActionResult> Index(DateOnly? ngay, string? trangThai, string? q)
     {
@@ -30,29 +30,10 @@ public class DatBanController(QuanLyNhaHangContext db, ILogger<DatBanController>
             return Result(count==1,count==1?"Đã duyệt đơn.":"Không thể duyệt: đơn đã quá giờ hoặc đã đổi trạng thái.");
         } catch(Microsoft.Data.SqlClient.SqlException ex) {logger.LogError(ex,"Approval failed");return Result(false,"Không lưu được đơn. Vui lòng thử lại.");}
     }
-    [HttpPost] public async Task<IActionResult> NhanBan(int id)
-    {
-        try {
-            var order=await db.DatBans.AsNoTracking().FirstOrDefaultAsync(x=>x.MaDatBan==id);
-            if(order==null)return NotFound();
-            await using var tx=await db.Database.BeginTransactionAsync(System.Data.IsolationLevel.Serializable);
-            var table=await db.BanAns.FromSqlInterpolated($"SELECT * FROM BanAn WITH (UPDLOCK,HOLDLOCK) WHERE MaBan={order.MaBan}").AsNoTracking().SingleAsync();
-            order=await db.DatBans.AsNoTracking().SingleAsync(x=>x.MaDatBan==id);
-            if(!BookingRules.CanReceive(order,BookingRules.Now))return Result(false,"Chỉ nhận bàn cho đơn đã duyệt, từ giờ hẹn đến trước khi hết lượt 2 giờ.");
-            if(table.TrangThai!="Trống")return Result(false,"Bàn đang ngừng nhận khách.");
-            if(await db.DatBans.AnyAsync(x=>x.MaBan==order.MaBan && x.MaDatBan!=id && x.TrangThai=="Đang phục vụ"))return Result(false,"Bàn còn đơn đang phục vụ. Hãy hoàn thành đơn trước khi nhận lượt mới.");
-            var count=await db.DatBans.Where(x=>x.MaDatBan==id && x.TrangThai=="Đã duyệt").ExecuteUpdateAsync(s=>s.SetProperty(x=>x.TrangThai,"Đang phục vụ"));
-            await tx.CommitAsync();return Result(count==1,count==1?"Đã nhận bàn.":"Đơn đã thay đổi trạng thái.");
-        } catch(Microsoft.Data.SqlClient.SqlException ex) {logger.LogError(ex,"Check-in failed");return Result(false,"Không nhận bàn được. Vui lòng tải lại và thử lại.");}
-    }
-    [HttpPost] public Task<IActionResult> HoanThanh(int id)=>Change(id,"Đang phục vụ","Hoàn thành");
-    [HttpPost] public async Task<IActionResult> Huy(int id,string lyDoHuy)
-    {
-        if(string.IsNullOrWhiteSpace(lyDoHuy)||lyDoHuy.Length>255)return Result(false,"Nhập lý do hủy từ 1–255 ký tự.");
-        try {
-            var count=await db.DatBans.Where(x=>x.MaDatBan==id&&(x.TrangThai=="Chờ xác nhận"||x.TrangThai=="Đã duyệt")).ExecuteUpdateAsync(s=>s.SetProperty(x=>x.TrangThai,"Đã hủy").SetProperty(x=>x.LyDoHuy,lyDoHuy.Trim()));
-            return Result(count==1,count==1?"Đã hủy đơn.":"Không thể hủy đơn ở trạng thái hiện tại.");
-        } catch(Microsoft.Data.SqlClient.SqlException ex) {logger.LogError(ex,"Cancellation failed");return Result(false,"Không hủy được đơn. Vui lòng thử lại.");}
-    }
+    [HttpPost] public async Task<IActionResult> NhanBan(int id){
+        try{await workflow.CheckInOrder(id);return Result(true,"Đã nhận bàn.");}
+        catch(RestaurantManagement.Services.WorkflowException ex){return Result(false,ex.Message);}
+        catch(Microsoft.Data.SqlClient.SqlException ex){logger.LogError(ex,"Check-in failed");return Result(false,"Không nhận bàn được. Vui lòng thử lại.");}
+    }    [HttpPost] public IActionResult HoanThanh(int id)=>Result(false,"Hoàn tất đơn tại trang nhân viên bằng chức năng tính tiền và xuất bill.");
+    [HttpPost] public async Task<IActionResult> Huy(int id,string lyDoHuy){if(string.IsNullOrWhiteSpace(lyDoHuy)||lyDoHuy.Length>255)return Result(false,"Nhập lý do hủy từ 1–255 ký tự.");try{await workflow.Cancel(id,null,lyDoHuy.Trim());return Result(true,"Đã hủy đơn và hoàn cọc giả lập nếu có.");}catch(RestaurantManagement.Services.WorkflowException ex){return Result(false,ex.Message);}}
 }
-

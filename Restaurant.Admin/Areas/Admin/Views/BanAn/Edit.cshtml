@@ -1,45 +1,7 @@
 @model RestaurantManagement.Models.BanAn
-
-@{
-    ViewData["Title"] = "Edit";
-}
-
-<h1>Edit</h1>
-
-<h4>BanAn</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="MaBan" />
-            <div class="form-group">
-                <label asp-for="TenBan" class="control-label"></label>
-                <input asp-for="TenBan" class="form-control" />
-                <span asp-validation-for="TenBan" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SoChoNgoi" class="control-label"></label>
-                <input asp-for="SoChoNgoi" class="form-control" />
-                <span asp-validation-for="SoChoNgoi" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TrangThai" class="control-label"></label>
-                <select asp-for="TrangThai" class="form-select"><option>Trống</option><option>Bảo trì</option><option>Ngừng phục vụ</option></select>
-                <span asp-validation-for="TrangThai" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
-
+@{ViewData["Title"]="Thông tin bàn";}
+<h1 class="h3 mb-3">Thông tin bàn</h1><form asp-action="Edit" method="post" enctype="multipart/form-data" class="card p-4"><div asp-validation-summary="All" class="text-danger" role="alert"></div><input asp-for="MaBan" type="hidden"/>
+<div class="row g-4"><div class="col-lg-7"><label asp-for="TenBan">Tên bàn</label><input asp-for="TenBan" maxlength="50" required class="form-control"/><label asp-for="ViTri">Vị trí trong nhà hàng</label><input asp-for="ViTri" maxlength="150" class="form-control" placeholder="Ví dụ: Tầng trệt · Khu A · Cửa sổ 1"/><label asp-for="SoChoNgoi">Số chỗ</label><input asp-for="SoChoNgoi" type="number" min="1" max="100" required class="form-control"/><label asp-for="TrangThai">Trạng thái</label><select asp-for="TrangThai" class="form-select"><option>Trống</option><option>Bảo trì</option><option>Ngừng phục vụ</option></select></div>
+<div class="col-lg-5"><label for="anhTaiLen">Ảnh bàn / không gian</label><p class="small text-muted">JPG, PNG hoặc WebP, tối đa 5 MB. Để trống để giữ ảnh hiện tại.</p><input id="anhTaiLen" name="anhTaiLen" type="file" accept="image/jpeg,image/png,image/webp" data-image-input class="form-control"/><img src="@Model.HinhAnh" data-image-preview alt="Xem trước ảnh bàn" class="mt-3 rounded" style="width:100%;aspect-ratio:4/3;object-fit:cover" hidden="@(string.IsNullOrWhiteSpace(Model.HinhAnh))"/><p data-image-error class="text-danger small mt-2" role="alert"></p></div></div>
+<div class="mt-4"><button class="btn btn-primary">Lưu bàn</button><a asp-action="Index" class="btn">Quay lại</a></div></form>
+@section Scripts {<script src="~/js/image-upload.js" asp-append-version="true"></script>}

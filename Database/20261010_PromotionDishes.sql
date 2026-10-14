@@ -1,0 +1,14 @@
+SET XACT_ABORT ON;
+BEGIN TRANSACTION;
+IF OBJECT_ID('dbo.KhuyenMaiMonAn','U') IS NULL
+BEGIN
+ CREATE TABLE dbo.KhuyenMaiMonAn (
+  MaKhuyenMai int NOT NULL,
+  MaMon int NOT NULL,
+  CONSTRAINT PK_KhuyenMaiMonAn PRIMARY KEY (MaKhuyenMai,MaMon),
+  CONSTRAINT FK_KhuyenMaiMonAn_KhuyenMai FOREIGN KEY (MaKhuyenMai) REFERENCES dbo.KhuyenMai(MaKhuyenMai) ON DELETE CASCADE,
+  CONSTRAINT FK_KhuyenMaiMonAn_MonAn FOREIGN KEY (MaMon) REFERENCES dbo.MonAn(MaMon) ON DELETE CASCADE
+ );
+ CREATE INDEX IX_KhuyenMaiMonAn_MaMon ON dbo.KhuyenMaiMonAn(MaMon);
+END;
+COMMIT;

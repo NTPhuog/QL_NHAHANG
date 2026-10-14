@@ -1,4 +1,3 @@
 @model IEnumerable<RestaurantManagement.Models.KhuyenMai>
-@{ViewData["Title"]="Ưu đãi";}
-<h1>Ưu đãi dành cho bạn</h1>@if(!Model.Any()){<p>Hiện chưa có chương trình ưu đãi. Hãy quay lại sau nhé.</p>}
-@foreach(var k in Model){<article class="card p-4 my-3"><h2 class="h4">@k.TenKhuyenMai</h2><p>@k.MoTa</p><p>Giảm @k.PhanTramGiam% · @k.NgayBatDau.ToString("dd/MM/yyyy") – @k.NgayKetThuc.ToString("dd/MM/yyyy")</p></article>}
+@{ViewData["Title"]="Khuyến mãi";}
+<section class="py-4"><h1>Ưu đãi cho bữa ăn của bạn</h1><p class="text-muted mb-4">Mỗi món được áp dụng mức giảm cao nhất đang có hiệu lực.</p>@if(!Model.Any()){<div class="alert alert-light">Hiện chưa có khuyến mãi áp dụng.</div>}<div class="row g-4">@foreach(var item in Model){<div class="col-md-6 col-xl-4"><partial name="_Promotion" model="item" /></div>}</div><a asp-controller="MonAn" asp-action="Index" class="btn btn-dark mt-4">Khám phá thực đơn</a></section>

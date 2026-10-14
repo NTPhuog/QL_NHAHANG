@@ -1,15 +1,13 @@
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement.Models;
 
 namespace RestaurantManagement.Controllers;
 
-public class HomeController : Controller
+public class HomeController(QuanLyNhaHangContext db) : Controller
 {
-    public IActionResult Index()
-    {
-        return View();
-    }
+    public async Task<IActionResult> Index(){var cutoff=BookingRules.Now.AddDays(-30);var dishes=await db.MonAns.AsNoTracking().Where(x=>x.TrangThai=="Hiển thị"&&x.NgayThem>=cutoff).OrderByDescending(x=>x.NgayThem).ThenByDescending(x=>x.MaMon).Take(3).ToListAsync();ViewBag.Discounts=await PromotionPricing.DiscountsAsync(db,dishes.Select(x=>x.MaMon));return View(dishes);}
 
     public IActionResult Privadocy()
     {

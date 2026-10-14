@@ -1,0 +1,3 @@
+@model RestaurantManagement.Models.MonAn
+@{var discounts=ViewBag.Discounts as Dictionary<int,decimal>;var percent=discounts?.GetValueOrDefault(Model.MaMon)??0m;}
+<div class="dish-price">@if(percent>0){<span class="badge bg-danger mb-1">Giảm @percent.ToString("0.##")%</span><del class="text-muted d-block small">@Model.Gia.ToString("N0") ₫</del>}<strong>@RestaurantManagement.Models.PromotionPricing.DiscountedPrice(Model.Gia,percent).ToString("N0") <small>₫</small></strong></div>

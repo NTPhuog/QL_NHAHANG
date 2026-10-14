@@ -1,0 +1,5 @@
+SET XACT_ABORT ON;
+BEGIN TRANSACTION;
+IF COL_LENGTH('dbo.BanAn','HinhAnh') IS NULL
+    ALTER TABLE dbo.BanAn ADD HinhAnh nvarchar(255) NULL;
+COMMIT;

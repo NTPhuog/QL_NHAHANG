@@ -1,9 +1,12 @@
-@model RestaurantManagement.Models.DatBan
-@{ViewData["Title"]="Đặt bàn";}
-<section class="booking-page"><h1>Đặt bàn @ViewBag.TenBan</h1><p>Tối đa @ViewBag.SoChoNgoi khách. Mỗi lượt 2 giờ; nhận khách từ 10:00 đến 20:00.</p>
-<form method="post" asp-action="Create"><div asp-validation-summary="All" class="text-danger"></div><input asp-for="MaBan" type="hidden"/>
-<label asp-for="NgayDat">Ngày đặt</label><input asp-for="NgayDat" type="date" class="form-control" required/>
-<label asp-for="GioDat">Giờ đặt</label><input asp-for="GioDat" type="time" class="form-control" min="10:00" max="20:00" required/>
-<label asp-for="SoLuongKhach">Số khách</label><input asp-for="SoLuongKhach" type="number" min="1" max="@ViewBag.SoChoNgoi" class="form-control" required/>
-<label asp-for="GhiChu">Ghi chú</label><textarea asp-for="GhiChu" maxlength="255" class="form-control"></textarea>
-<button class="btn btn-primary mt-3">Gửi yêu cầu đặt bàn</button></form></section>
+@model RestaurantManagement.CustomerModels.BookingForm
+@using RestaurantManagement.Models
+@{ViewData["Title"]="Giữ bàn & chọn món";}
+<section class="booking-page" style="max-width:1000px"><p class="eyebrow">ĐẶT BÀN · BƯỚC 2</p><h1>@Model.Table.TenBan</h1><p>@Model.Table.ViTri · Tối đa @Model.Table.SoChoNgoi khách</p><p>@Model.Date.ToString("dd/MM/yyyy") · @Model.Time.ToString("HH:mm")–@Model.Time.AddHours(2).ToString("HH:mm")</p>
+<div id="hold-status" class="alert alert-warning" role="status" aria-live="polite">Đang yêu cầu giữ bàn 5 phút…</div>
+<form method="post" asp-action="Create" id="booking-form" data-hold-form data-table="@Model.Table.MaBan" data-date="@Model.Date.ToString("yyyy-MM-dd")" data-time="@Model.Time.ToString("HH:mm")"><div asp-validation-summary="All" class="text-danger"></div><input type="hidden" name="holdId" id="hold-id" value="@Model.HoldId"/>
+<label for="guests">Số khách</label><input id="guests" name="guests" type="number" min="1" max="@Model.Table.SoChoNgoi" value="@Model.Guests" required class="form-control"/>
+<label for="note">Ghi chú</label><textarea id="note" name="note" maxlength="255" class="form-control">@Model.Note</textarea>
+@if(Model.Table.SoChoNgoi<=2){<div class="alert alert-light mt-4">Bàn 2 chỗ chỉ đặt bàn, không đặt món trước và không cần cọc. Lễ tân sẽ hỗ trợ gọi món khi bạn đến.</div>}else{<h2 class="h4 mt-4">Đặt món trước <small class="text-muted">(không bắt buộc)</small></h2><p>Cọc 50% tiền món sau ưu đãi. Thanh toán giả lập ở bước tiếp theo.</p><div class="table-responsive"><table class="table align-middle"><thead><tr><th>Món ăn</th><th>Đơn giá sau giảm</th><th>Số lượng</th></tr></thead><tbody>@for(var i=0;i<Model.Menu.Count;i++){var m=Model.Menu[i];var discount=Model.Discounts.GetValueOrDefault(m.MaMon);var price=PromotionPricing.DiscountedPrice(m.Gia,discount);var count=Model.Selected.FirstOrDefault(x=>x.MaMon==m.MaMon)?.SoLuong??0;<tr><td>@m.TenMon @if(discount>0){<small class="badge bg-danger">−@discount.ToString("0.##")%</small>}<input type="hidden" name="items[@i].MaMon" value="@m.MaMon"/></td><td>@price.ToString("N0") ₫</td><td><input aria-label="Số lượng @m.TenMon" name="items[@i].SoLuong" type="number" min="0" max="99" value="@count" class="form-control dish-qty" data-price="@price.ToString(System.Globalization.CultureInfo.InvariantCulture)" style="width:90px"/></td></tr>}</tbody></table></div><p>Tạm tính: <strong id="basket-total">0 ₫</strong> · Cọc 50%: <strong id="basket-deposit">0 ₫</strong></p>}
+<button class="action-dark mt-3" id="continue-button" disabled>Kiểm tra & xác nhận →</button><a asp-controller="BanAn" asp-action="Index" class="btn mt-3">Chọn bàn khác</a></form>
+<form asp-action="NhaBan" method="post" class="mt-3"><input type="hidden" name="holdId" data-release-id value="@Model.HoldId"/><button class="btn btn-outline-secondary btn-sm">Nhả bàn và quay lại</button></form></section>
+@section Scripts {<script src="~/js/booking-hold.js" asp-append-version="true"></script>}

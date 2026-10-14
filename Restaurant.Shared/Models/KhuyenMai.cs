@@ -6,6 +6,8 @@ namespace RestaurantManagement.Models;
 
 public partial class KhuyenMai
 {
+    public ICollection<KhuyenMaiMonAn> MonApDung { get; set; } = new List<KhuyenMaiMonAn>();
+
     public int MaKhuyenMai { get; set; }
 
     [Required, StringLength(100)]
@@ -24,4 +26,5 @@ public partial class KhuyenMai
     [Required, RegularExpression("^(Hoạt động|Ngừng)$")]
     public string? TrangThai { get; set; }
 }
+
 

@@ -7,6 +7,7 @@ namespace RestaurantManagement.Models;
 public partial class MonAn
 {
     public int MaMon { get; set; }
+    public DateTime? NgayThem { get; set; } = BookingRules.Now;
 
     public int MaDanhMuc { get; set; }
 
